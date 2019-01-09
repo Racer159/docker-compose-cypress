@@ -1,5 +1,4 @@
 FROM cypress/browsers:chrome69
-MAINTAINER me@racer159.com
 
 # Install required dependencies for docker
 RUN set -ex; \
