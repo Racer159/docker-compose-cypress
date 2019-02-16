@@ -23,6 +23,11 @@ RUN curl -L https://github.com/docker/compose/releases/download/1.18.0/docker-co
 RUN chmod +x /usr/local/bin/docker-compose
 RUN docker-compose --version
 
+# Update git to 2.11.0
+RUN echo "deb http://deb.debian.org/debian jessie-backports main" | tee -a /etc/apt/sources.list
+RUN apt-get update
+RUN apt-get -y -t jessie-backports install git
+
 # Define additional metadata for the image
 VOLUME /var/lib/docker
 CMD ["wrapdocker"]
