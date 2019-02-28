@@ -42,6 +42,11 @@ RUN apt-get -y install oracle-java8-installer
 ADD https://bintray.com/sonarsource/SonarQube/download_file?file_path=org%2Fsonarsource%2Fscanner%2Fcli%2Fsonar-scanner-cli%2F${SONAR_SCANNER_VERSION}%2Fsonar-scanner-cli-${SONAR_SCANNER_VERSION}.zip /tmp/sonar-scanner-cli-${SONAR_SCANNER_VERSION}.zip
 RUN unzip /tmp/sonar-scanner-cli-${SONAR_SCANNER_VERSION}.zip -d /usr/lib && \
     ln -s /usr/lib/sonar-scanner-${SONAR_SCANNER_VERSION}/bin/sonar-scanner /usr/bin/sonar-scanner
+    
+# Install Swagger Codegen
+RUN wget -qO- https://api.github.com/repos/swagger-api/swagger-codegen/tarball/master | tar zxv -C /swagger-api \
+    && mv /swagger-api/swagger-api-swagger-codegen* /swagger-api/swagger-codegen/ \
+    && ln -s /swagger-api/swagger-codegen/modules/swagger-codegen/src/test/resources/2_0/ /swagger-api/yaml
 
 # Define additional metadata for the image
 VOLUME /var/lib/docker
