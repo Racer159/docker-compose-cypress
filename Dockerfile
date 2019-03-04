@@ -12,7 +12,8 @@ RUN set -ex; \
     iptables \
     locales \
     git \
-    default-jre
+    default-jre \
+    gradle
 
 # Install Docker from the Docker repositories
 RUN curl -sSL https://get.docker.com/ | sh
