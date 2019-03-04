@@ -27,10 +27,10 @@ RUN curl -L https://github.com/docker/compose/releases/download/1.18.0/docker-co
 RUN chmod +x /usr/local/bin/docker-compose
 RUN docker-compose --version
 
-# Update git to 2.11.0
+# Update git to 2.11.0 and gradle to 2.10
 RUN echo "deb http://deb.debian.org/debian jessie-backports main" | tee -a /etc/apt/sources.list
 RUN apt-get update
-RUN apt-get -y -t jessie-backports install git
+RUN apt-get -y -t jessie-backports install git gradle
 
 # Install Java 8 (needed for SonarQube)
 RUN apt-get -y install software-properties-common
